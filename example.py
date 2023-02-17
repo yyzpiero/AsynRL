@@ -1,7 +1,7 @@
 
 from sample_factory.algorithms.appo.appo import APPO
 
-env_id = "gym_CartPole-v0"
+env_id = "nasim:Tiny-v0"
 device ="gpu"
 
 model = APPO(env=env_id, device=device, 
@@ -9,4 +9,5 @@ model = APPO(env=env_id, device=device,
              num_envs_per_worker=8,
              encoder='mlp', encodersubtype = 'mlp_mujoco')
     
-model.train(train_for_env_steps=1000000)
+model.train(train_for_env_steps=100000)
+

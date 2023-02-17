@@ -122,6 +122,11 @@ def maze_funcs():
     from sample_factory.envs.maze.maze_params import maze_override_defaults
     return make_maze_env, None, maze_override_defaults
 
+def nasim_funcs():
+    from sample_factory.envs.nasim.nasim_utils import make_nasim_env
+    from sample_factory.envs.nasim.nasim_params import nasim_override_defaults
+    return make_nasim_env, None, nasim_override_defaults
+
 def minihack_funcs():
     from sample_factory.envs.minihack.minihack_utils import make_minihack_env
     from sample_factory.envs.minihack.minihack_params import minihack_override_defaults
@@ -144,6 +149,7 @@ def register_default_envs(env_registry):
         'MiniGrid': minigrid_funcs,
         'maze': maze_funcs,
         'MiniHack': minihack_funcs,
+        'nasim': nasim_funcs
     }
 
     for envs_prefix, env_funcs in default_envs.items():
