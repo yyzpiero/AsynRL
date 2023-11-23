@@ -59,7 +59,7 @@ class CFG:
         self
     ):
         self.algo = "APPO"
-        self.env = "nasim:Medium-v0"
+        self.env = "nasim:Medium-v1"
         self.experiment = "default_experiment"
         self.experiments_root = None
         self.help = False
@@ -388,6 +388,7 @@ class APPO(ReinforcementLearningAlgorithm):
     def __init__(
     self,
     env,
+    experiment: str,
     encoder: str,
     encodersubtype:str,
     num_envs_per_worker:int =2,
@@ -409,9 +410,10 @@ class APPO(ReinforcementLearningAlgorithm):
 
     #def __init__(self, cfg):
         super().__init__(cfg)
-
         # we should not use CUDA in the main thread, only on the workers
         set_global_cuda_envvars(cfg)
+
+        self.cfg.experiment = experiment
 
         tmp_env = make_env_func(self.cfg, env_config=None)
         self.obs_space = tmp_env.observation_space
@@ -997,6 +999,7 @@ class APPO(ReinforcementLearningAlgorithm):
        #self.parameters = parameters
        if isinstance(parameters, dict):
         self.parameters = parameters
+        
         for policy_id in range(self.cfg.num_policies):
             load_path_or_dict = self.parameters[policy_id]
             policy_version, _,_ = self.actor_critics[policy_id]

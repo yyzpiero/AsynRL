@@ -132,6 +132,11 @@ def gym_funcs():
     from sample_factory.envs.gym.gym_params import gym_override_defaults
     return make_gym_env, None, gym_override_defaults
 
+def nasim_funcs():
+    from sample_factory.envs.nasim.nasim_utils import make_nasim_env
+    from sample_factory.envs.nasim.nasim_params import nasim_override_defaults
+    return make_nasim_env, None, nasim_override_defaults
+
 
 def register_default_envs(env_registry):
     """
@@ -150,6 +155,7 @@ def register_default_envs(env_registry):
         'maze': maze_funcs,
         'MiniHack': minihack_funcs,
         'gym_':gym_funcs,
+        'nasim_':nasim_funcs,
     }
 
     for envs_prefix, env_funcs in default_envs.items():
