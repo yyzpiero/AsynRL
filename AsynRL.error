@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/yangyizhou/.vscode-server/extensions/ms-python.python-2023.2.0/pythonFiles/shell_exec.py", line 26, in <module>
-    subprocess.check_call(shell_args, stdout=sys.stdout, stderr=sys.stderr)
-  File "/home/yangyizhou/software/miniconda3/envs/AsynRL/lib/python3.8/subprocess.py", line 364, in check_call
-    raise CalledProcessError(retcode, cmd)
-subprocess.CalledProcessError: Command '['conda', 'update', '-c', 'conda-forge', '--name', 'AsynRL', 'tensorboard', '-y', '/tmp/tmp-7145rS2pPHXjP6nj.logconda', 'activate']' returned non-zero exit status 2.

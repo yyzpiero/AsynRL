@@ -1,10 +1,13 @@
-# noinspection PyUnusedLocal
 def nasim_override_defaults(env, parser):
     parser.set_defaults(
-        hidden_size=128,
-        obs_subtract_mean=4.0,
-        obs_scale=8.0,
-        exploration_loss_coeff=0.005,
-        env_frameskip=1,
+        encoder_type='mlp',
+        encoder_subtype='mlp_mujoco',
+        hidden_size=64,
+        encoder_extra_fc_layers=True,
+        #env_frameskip=1,
+        nonlinearity='silu'
     )
 
+# noinspection PyUnusedLocal
+def add_nasim_env_args(env, parser):
+    p = parser
